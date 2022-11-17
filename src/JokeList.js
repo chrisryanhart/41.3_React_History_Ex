@@ -7,7 +7,7 @@ function JokeList({ numJokesToGet = 10 }) {
   const [jokes, setJokes] = useState([]);
 
   /* get jokes if there are no jokes */
-
+  // could use lifeCycle components here
   useEffect(function() {
     async function getJokes() {
       let j = [...jokes];
@@ -36,13 +36,15 @@ function JokeList({ numJokesToGet = 10 }) {
   }, [jokes, numJokesToGet]);
 
   /* empty joke list and then call getJokes */
-
+  // call setState. controls state of jokes list
+  // set as a function & call with a click listener
+  // use this.state()
   function generateNewJokes() {
     setJokes([]);
   }
 
   /* change vote for this id by delta (+1 or -1) */
-
+  // function passed down to child.  
   function vote(id, delta) {
     setJokes(allJokes =>
       allJokes.map(j => (j.id === id ? { ...j, votes: j.votes + delta } : j))
